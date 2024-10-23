@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubre Malagón</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .container {
+            padding: 20px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .gallery img {
+            width: 30%;
+            margin: 1%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="inicio.html">Inicio</a>
+    <a href="galeria.html">Galería</a>
+    <a href="formulario.html">Formulario</a>
+</nav>
+
+
+<div class="container" id="inicio">
+    <h1>Bienvenido a Malagón</h1>
+    <img src="../Lenguaje de marcas/cropped-cabecera-ayto_2018_normal.png" alt="Vista de Malagón" style="width:100%;">
+    <h2>Información de Contacto</h2>
+    <table>
+        <tr>
+            <th>Dirección</th>
+            <th>Mapa</th>
+        </tr>
+        <tr>
+            <td>Calle Calatraba, Malagón</td>
+            <td><a href="https://www.google.com/maps?q=Malagón" target="_blank">Ver en Google Maps</a></td>
+        </tr>
+    </table>
+</div>
+
+<!-- Página de galería -->
+<div class="container" id="galeria" style="display:none;">
+    <h1>Galería de Imágenes de Malagón</h1>
+    <div class="gallery">
+        <img src="../Lenguaje de marcas/unnamed.jpg" alt="Imagen 1">
+        <img src="../Lenguaje de marcas/1528301953_061016mc_0592.jpg" alt="Imagen 2">
+        <img src="../Lenguaje de marcas/molino-carrillo--malagon.jpg" alt="Imagen 3">
+ 
+    </div>
+</div>
+
+<!-- Página de formulario -->
+<div class="container" id="formulario" style="display:none;">
+    <h1>Formulario de Contacto</h1>
+    <form>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="mensaje">Mensaje:</label><br>
+        <textarea id="mensaje" name="mensaje" rows="4" required></textarea><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+</div>
+
+<script>
+
+    const sections = document.querySelectorAll('.container');
+    const links = document.querySelectorAll('nav a');
+
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = e.target.getAttribute('href').replace('.html', '');
+            sections.forEach(section => {
+                section.style.display = section.id === target ? 'block' : 'none';
+            });
+        });
+    });
+
+  
+    document.getElementById('inicio').style.display = 'block';
+</script>
+
+</body>
+</html>
